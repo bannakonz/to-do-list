@@ -5,6 +5,13 @@ import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
+  console.log(reactLogo);
+
+  const a = 10;
+  const b = 20;
+  console.log(a + b);
+
+  console.log(b + b);
 
   return (
     <>
@@ -28,6 +35,7 @@ function App() {
       <p className={"read-the-docs"}>
         Click on the Vite and React logos to learn more
       </p>
+      <h1>test</h1>
     </>
   );
 }
