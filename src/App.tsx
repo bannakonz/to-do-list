@@ -49,12 +49,12 @@ function App() {
         <input
           value={title}
           onChange={handleTitleChange}
-          placeholder="Title 1"
+          placeholder="Enter task title"
         />
         <input
           value={detail}
           onChange={handleDetailChange}
-          placeholder="Detail 1"
+          placeholder="Enter task detail"
         />
         <button onClick={addTodo}>Add Task</button>
         <hr />
@@ -63,7 +63,7 @@ function App() {
             {todos?.map((item, index) => {
               return (
                 <li key={index}>
-                  {item.title} ,{item.detail}
+                  <strong>{item.title}</strong>: {item.detail}
                 </li>
               );
             })}
