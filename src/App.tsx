@@ -37,7 +37,11 @@ function App() {
   };
 
   const addTodo = () => {
-    setTodos([...todos, { id: Date.now(), title: title, detail: detail }]);
+    if (!title.trim() || !detail.trim()) return;
+    setTodos([
+      ...todos,
+      { id: Date.now(), title: title.trim(), detail: detail.trim() },
+    ]);
     setTitle("");
     setDetail("");
   };
@@ -62,7 +66,7 @@ function App() {
           <ul>
             {todos?.map((item, index) => {
               return (
-                <li key={index}>
+                <li key={`todoItem-${item.id}-${index}`}>
                   <strong>{item.title}</strong>: {item.detail}
                 </li>
               );
