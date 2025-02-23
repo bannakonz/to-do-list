@@ -26,24 +26,19 @@ function App() {
     },
   ]);
 
-  const [title, setTitle] = useState("");
-  const [detail, setDetail] = useState("");
-  const handleTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.target.value);
-  };
+  const [form, setForm] = useState({ title: "", detail: "" });
 
-  const handleDetailChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setDetail(event.target.value);
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [event.target.name]: event.target.value });
   };
 
   const addTodo = () => {
-    if (!title.trim() || !detail.trim()) return;
+    if (!form.title.trim() || !form.detail.trim()) return;
     setTodos([
       ...todos,
-      { id: Date.now(), title: title.trim(), detail: detail.trim() },
+      { id: Date.now(), title: form.title.trim(), detail: form.detail.trim() },
     ]);
-    setTitle("");
-    setDetail("");
+    setForm({ title: "", detail: "" });
   };
 
   return (
@@ -51,13 +46,15 @@ function App() {
       <div>
         <h1>To-Do List</h1>
         <input
-          value={title}
-          onChange={handleTitleChange}
+          name="title"
+          value={form.title}
+          onChange={handleInputChange}
           placeholder="Enter task title"
         />
         <input
-          value={detail}
-          onChange={handleDetailChange}
+          name="detail"
+          value={form.detail}
+          onChange={handleInputChange}
           placeholder="Enter task detail"
         />
         <button onClick={addTodo}>Add Task</button>
